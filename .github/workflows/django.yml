@@ -1,10 +1,20 @@
 name: Django CI
 
+env:
+  DATABASE_HOST: localhost
+  DATABASE_PORT: 5432
+  DATABASE_USER: psql
+  DATABASE_PASSWORD: psql
+  DATABASE_NAME: devops_db
+
+
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+
+  
 
 jobs:
   build:
