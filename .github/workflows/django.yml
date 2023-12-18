@@ -53,4 +53,4 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push Docker image to Docker Hub
-        run: chmod 777 build.sh && ./build.sh && docker push mazene/devops-img
+        run: chmod 777 build.sh && ./build.sh && docker push mazene/devops-backend
