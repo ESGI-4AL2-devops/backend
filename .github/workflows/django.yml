@@ -2,8 +2,8 @@ name: Django CI
 
 env:
   DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
-  DATABASE_PORT: 5432
-  DATABASE_USER: psql
+  DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
+  DATABASE_USER: ${{ secrets.DATABASE_USER }}
   DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
   DATABASE_NAME: devops_db
 
