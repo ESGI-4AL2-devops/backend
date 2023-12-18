@@ -1,12 +1,5 @@
 name: Django CI
 
-env:
-  DATABASE_HOST: localhost
-  DATABASE_PORT: 5432
-  DATABASE_USER: psql
-  DATABASE_PASSWORD: psql
-  DATABASE_NAME: devops_db
-
 on:
   push:
     branches: ["main"]
@@ -25,11 +18,11 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_USER: ${{ env.DATABASE_USER }}
-          POSTGRES_PASSWORD: ${{ env.DATABASE_PASSWORD }}
-          POSTGRES_DB: ${{ env.DATABASE_NAME }}
+          POSTGRES_USER: psql
+          POSTGRES_PASSWORD: psql
+          POSTGRES_DB: devops_db
         ports:
-          - ${{ env.DATABASE_PORT }}:5432
+          - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
