@@ -1,11 +1,11 @@
 name: Django CI
 
 env:
-  DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
-  DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
-  DATABASE_USER: ${{ secrets.DATABASE_USER }}
+  DATABASE_HOST: localhost
+  DATABASE_PORT: 5432
+  DATABASE_USER: psql
   DATABASE_PASSWORD: psql
-  DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+  DATABASE_NAME: devops_db
 
 on:
   push:
