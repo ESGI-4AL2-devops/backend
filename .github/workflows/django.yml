@@ -4,7 +4,7 @@ env:
   DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
   DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
   DATABASE_USER: ${{ secrets.DATABASE_USER }}
-  DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+  DATABASE_PASSWORD: psql
   DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
 
 on:
@@ -16,6 +16,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     strategy:
       max-parallel: 4
       matrix:
