@@ -1,7 +1,7 @@
 name: Django CI
 
 env:
-  DATABASE_HOST: localhost
+  DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
   DATABASE_PORT: 5432
   DATABASE_USER: psql
   DATABASE_PASSWORD: psql
