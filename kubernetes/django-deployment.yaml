@@ -19,8 +19,36 @@ spec:
         - name: backend
           image: mazene/devops-backend
           ports:
-            - containerPort: 80
+            - containerPort: 8000
+          env:
+            - name: DATABASE_PORT
+              value: "5432"
+            - name: DATABASE_HOST
+              value: database-service
+            - name: DATABASE_USER
+              value: psql
+            - name: DATABASE_PASSWORD
+              value: psql
+            - name: DATABASE_NAME
+              value: devops_db
 ---
+
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  namespace: lmz
+  labels:
+    app.kubernetes.io/component: controller
+  # Mettre un nom unique pour la classe ingress
+  name: lmz-backend
+  annotations:
+    ingressclass.kubernetes.io/is-default-class: "true"
+spec:
+  controller: k8s.io/ingress-nginx
+
+---
+
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -31,8 +59,8 @@ spec:
     app: backend
   ports:
     - protocol: TCP
-      port: 8000
-      targetPort: 80
+      port: 8012
+      targetPort: 8000
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -55,7 +83,7 @@ spec:
               service:
                 name: backend-service
                 port:
-                  number: 8000
+                  number: 8012
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -78,11 +106,11 @@ spec:
         - name: postgres
           image: postgres:latest
           env:
-            - name: psql
+            - name: POSTGRES_USER
               value: psql
-            - name: psql
+            - name: POSTGRES_PASSWORD
               value: psql
-            - name: devops_db
+            - name: POSTGRES_DB
               value: devops_db
           ports:
             - containerPort: 5432
