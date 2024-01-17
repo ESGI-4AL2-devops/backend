@@ -46,6 +46,24 @@ jobs:
       - name: Run Migrations
         run: |
           python manage.py migrate
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8
+
+      - name: Run Flake8
+        run: |
+          flake8
+
       - name: Run Tests
         run: |
           python manage.py test
@@ -57,3 +75,5 @@ jobs:
 
       - name: Push Docker image to Docker Hub
         run: docker push mazene/devops-backend:latest
+
+
