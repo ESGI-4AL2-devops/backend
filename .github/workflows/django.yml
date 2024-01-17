@@ -55,6 +55,25 @@ jobs:
       - name: Run Tests
         run: |
           python manage.py test
+
+
+      - name: test coverage
+        run: |
+          pip install coverage
+
+      - name: Run tests with coverage
+        run: |
+          coverage run manage.py test
+
+      - name: Generate coverage report
+        run: coverage html
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-report
+          path: htmlcov/
+
       - name: Log in to Docker Hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
