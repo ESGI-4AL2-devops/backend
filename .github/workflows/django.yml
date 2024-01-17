@@ -46,6 +46,10 @@ jobs:
       - name: Run Migrations
         run: |
           python manage.py migrate
+          
+      - name: Run Flake8
+        run: |
+          flake8
 
       - name: Run Tests
         run: |
