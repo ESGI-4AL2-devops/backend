@@ -68,7 +68,7 @@ metadata:
   name: backend-ingress
   namespace: lmz
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-staging-cluster-issuer
+    cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
   
 spec:
   ingressClassName: lmz-backend

@@ -85,7 +85,6 @@ jobs:
       
       - name: Deploy on kubernetes
         run: |
-            pwd
             kubectl --kubeconfig kubernetes/kubeconfig.yaml apply -f kubernetes/django-deployment.yaml
 
 
