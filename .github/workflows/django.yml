@@ -85,7 +85,7 @@ jobs:
       
       - name: Deploy on kubernetes
         run: |
-            kubectl --kubeconfig kubernetes/kubeconfig.yaml -f kubernetes/django-deployment.yaml
+            kubectl --kubeconfig kubernetes/kubeconfig.yaml delete -f kubernetes/django-deployment.yaml
             kubectl --kubeconfig kubernetes/kubeconfig.yaml apply -f kubernetes/django-deployment.yaml
 
 
